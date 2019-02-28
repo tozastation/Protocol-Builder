@@ -36,11 +36,3 @@ ENV GRPC_PLUGIN_PATH=/root/.nuget/packages/grpc.tools/1.19.0/tools/linux_x64/grp
 ENV CSHARP_OUT_PATH=/tmp/grpc_model/.
 ENV GRPC_OUT_PATH=/tmp/grpc_logic/.
 ENV PROTO_PATH=/tmp/proto/
-# Optional: change owner
-# RUN chown root /usr/local/bin/protoc
-# RUN chown -R [user] /usr/local/include/google
-
-# Add Grpc Tool
-# RUN dotnet add package Grpc.Tools
-#RUN git clone https://github.com/grpc/grpc-web
-#RUN cd grpc-web/; make install-plugin
