@@ -1,6 +1,5 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-alpine
 
-ENV DEBIAN_FRONTEND noninteractive
 WORKDIR /tmp
 
 # Add wget
@@ -18,7 +17,7 @@ RUN apk add protobuf
 RUN dotnet new console -o grpc; cd grpc; dotnet add package Grpc.Tools --version 1.19.0
 
 # Grpc code setting
-ENV GRPC_PLUGIN_PATH=/root/.nuget/packages/grpc.tools/1.19.0/tools/linux_x64/grpc_csharp_plugin
+ENV GRPC_PLUGIN_PATH=/root/.nuget/packages/grpc.tools/1.19.0/tools/linux_x86/grpc_csharp_plugin
 ENV CSHARP_OUT_PATH=/tmp/grpc/model/.
 ENV GRPC_OUT_PATH=/tmp/grpc/logic/.
 ENV PROTO_PATH=/tmp/grpc/idl/
