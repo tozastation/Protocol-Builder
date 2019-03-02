@@ -24,5 +24,7 @@ steps:
 - bash: git status
 - bash: git commit -m "[Add] New Build File"
   displayName: '変更を保存します'
+- bash: git push origin :generated
+  displayName: '取り敢えずブランチを消去します'
 - bash: git push --set-upstream origin generated 
   displayName: '変更を通知します'
