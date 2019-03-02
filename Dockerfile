@@ -1,29 +1,16 @@
-FROM ubuntu:16.04
-
-MAINTAINER tozastation <ryo.for.development@gmail.com>
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2-alpine
 
 ENV DEBIAN_FRONTEND noninteractive
 WORKDIR /tmp
 
 # Add wget
-RUN apt-get -y update
-RUN apt-get -y install wget
+RUN apk update 
+RUN apk add wget
 
-# Add dotnet SDK
-RUN wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
-RUN dpkg -i packages-microsoft-prod.deb
-RUN apt-get -y install apt-transport-https
-RUN apt-get -y update
-RUN apt-get -y install dotnet-sdk-2.2
-
-# Add Mono
-RUN apt-get -y install mono-devel
-
-# Add Grpc protobuf-compiler
-RUN apt-get -y install autoconf automake libtool curl make g++ unzip
-RUN apt-get -y install git build-essential gettext cmake python
-RUN apt-get -y install libprotobuf-dev libprotoc-dev 
+# Add Protocol Compiler
+RUN apk add alpine-sdk
 RUN wget https://github.com/google/protobuf/releases/download/v3.2.0/protoc-3.2.0-linux-x86_64.zip
+RUN mkdir protoc3
 RUN unzip protoc-3.2.0-linux-x86_64.zip -d protoc3
 RUN mv protoc3/bin/* /usr/local/bin/
 RUN mv protoc3/include/* /usr/local/include/
