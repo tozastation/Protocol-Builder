@@ -9,11 +9,12 @@ RUN apk add wget
 
 # Add Protocol Compiler
 RUN apk add alpine-sdk
-RUN wget https://github.com/google/protobuf/releases/download/v3.2.0/protoc-3.2.0-linux-x86_64.zip
-RUN mkdir protoc3
-RUN unzip protoc-3.2.0-linux-x86_64.zip -d protoc3
-RUN mv protoc3/bin/* /usr/local/bin/
-RUN mv protoc3/include/* /usr/local/include/
+# RUN wget https://github.com/google/protobuf/releases/download/v3.2.0/protoc-3.2.0-linux-x86_64.zip
+# RUN mkdir protoc3
+# RUN unzip protoc-3.2.0-linux-x86_64.zip -d protoc3
+# RUN mv protoc3/bin/* /usr/local/bin/
+# RUN mv protoc3/include/* /usr/local/include/
+RUN apt add protobuf
 RUN dotnet new console -o grpc; cd grpc; dotnet add package Grpc.Tools --version 1.19.0
 
 # Grpc code setting
