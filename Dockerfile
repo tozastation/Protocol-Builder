@@ -30,9 +30,7 @@ RUN mv protoc3/include/* /usr/local/include/
 RUN dotnet new console -o grpc; cd grpc; dotnet add package Grpc.Tools --version 1.19.0
 
 # Grpc code setting
-RUN mkdir grpc_model
-RUN mkdir grpc_logic
 ENV GRPC_PLUGIN_PATH=/root/.nuget/packages/grpc.tools/1.19.0/tools/linux_x64/grpc_csharp_plugin
-ENV CSHARP_OUT_PATH=/tmp/grpc_model/.
-ENV GRPC_OUT_PATH=/tmp/grpc_logic/.
-ENV PROTO_PATH=/tmp/proto/
+ENV CSHARP_OUT_PATH=/tmp/grpc/model/.
+ENV GRPC_OUT_PATH=/tmp/grpc/logic/.
+ENV PROTO_PATH=/tmp/grpc/idl/
